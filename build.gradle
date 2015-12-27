@@ -14,10 +14,18 @@ buildscript {
     }
 }
 
+ext {
+    CONFIG_MIN_SDK_VERSION = 16
+    CONFIG_COMPILE_SDK_VERSION = 21
+    CONFIG_TARGET_SDK_VERSION = 21
+    CONFIG_BUILD_TOOLS_VERSION = '21.1.1'
+}
+
 allprojects {
     repositories {
         jcenter()
     }
+
 }
 
 task clean(type: Delete) {
