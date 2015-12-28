@@ -18,7 +18,6 @@ before_script:
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 script:
-  - ./gradlew build jacocoTestReport assembleAndroidTest
   - ./gradlew connectedCheck
 before_install:
   - chmod +x gradlew
