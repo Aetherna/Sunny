@@ -31,4 +31,5 @@ public abstract class BasePresenter<UI> {
             action.execute(ui);
         }
     }
+
 }

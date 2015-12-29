@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.aethernadev.sunny.settings.SettingsActivity">
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/settings_pages"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_above="@+id/settings_buttons_panel">-->
+
+    <!--</android.support.v4.view.ViewPager>-->
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/settings_buttons_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_settings"
+            style="@style/ButtonSecondaryAction"
+            android:layout_width="1dp"
+            android:layout_marginRight="@dimen/margin_button"
+            android:layout_marginEnd="@dimen/margin_button"
+            android:layout_weight="1"
+            android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/save_settings"
+            style="@style/ButtonMainAction"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/margin_button"
+            android:layout_marginStart="@dimen/margin_button"
+            android:text="@string/save" />
+    </LinearLayout>
+</RelativeLayout>

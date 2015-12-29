@@ -2,11 +2,8 @@ package com.aethernadev.sunny.dagger;
 
 import com.aethernadev.sunny.DataComponent;
 import com.aethernadev.sunny.MainActivity;
-import com.aethernadev.sunny.main.MainPresenter;
-import com.aethernadev.sunny.module.PresenterModule;
-import com.aethernadev.sunny.module.UseCaseModule;
-import com.aethernadev.sunny.settings.SettingsPresenter;
-import com.aethernadev.sunny.usecaseexecutor.AsyncUseCaseExecutor;
+import com.aethernadev.sunny.settings.SettingsCitiesPresenter;
+import com.aethernadev.sunny.settings.cities.SettingsCitiesFragment;
 
 import javax.inject.Singleton;
 
@@ -20,7 +17,9 @@ import dagger.Component;
 public interface AppComponent {
 
 
-    SettingsPresenter settingsPresenter();
+    SettingsCitiesPresenter settingsPresenter();
 
     void inject(MainActivity mainActivity);
+
+    void inject(SettingsCitiesFragment settingsCitiesFragment);
 }

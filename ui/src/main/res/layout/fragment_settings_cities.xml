@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aethernadev.sunny.settings.cities.SettingsCitiesFragment">
+
+
+    <Button
+        android:id="@+id/restore_settings_to_default"
+        style="@style/ButtonSecondaryAction"
+        android:layout_gravity="right"
+        android:text="@string/restore_defaults" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_city" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/city_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/search_city"
+            android:layout_toStartOf="@+id/search_city"
+            android:inputType="textPhonetic" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/city_input"
+            android:layout_alignRight="@+id/city_input"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/search_city"
+            style="@style/ButtonMainAction"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/search_city_content_desc"
+            android:src="@drawable/abc_ic_search_api_mtrl_alpha" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/error_message"
+        style="@style/ErrorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ListView
+        android:id="@+id/selected_cities"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
+
+</LinearLayout>

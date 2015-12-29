@@ -1,9 +1,11 @@
 package com.aethernadev.sunny;
 
+import java.io.Serializable;
+
 /**
  * Created by Aetherna on 2015-12-27.
  */
-public class Location {
+public class Location implements Serializable {
 
     private String name = "";
     private String country = "";
