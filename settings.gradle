@@ -1,1 +1,1 @@
-include ':ui', ':worldweather', ':data', ':usecase', ':presenter'
+include ':ui', ':worldweather', ':data', ':usecase', ':presenter', ':storage'

@@ -1,4 +1,4 @@
-package com.aethernadev.sunny;
+package com.aethernadev.sunny.data;
 
 import java.io.Serializable;
 
@@ -12,10 +12,6 @@ public class Location implements Serializable {
     private String region = "";
     private double latitude;
     private double longitude;
-
-    public boolean isEmpty() {
-        return name.isEmpty() && country.isEmpty() && region.isEmpty();
-    }
 
     public String getName() {
         return name;

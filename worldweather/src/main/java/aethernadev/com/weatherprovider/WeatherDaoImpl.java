@@ -2,8 +2,8 @@ package aethernadev.com.weatherprovider;
 
 import android.support.annotation.NonNull;
 
-import com.aethernadev.sunny.Location;
-import com.aethernadev.sunny.WeatherDao;
+import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.dao.WeatherDao;
 
 import java.util.ArrayList;
 import java.util.HashMap;

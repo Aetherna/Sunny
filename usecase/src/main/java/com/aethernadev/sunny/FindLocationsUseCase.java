@@ -1,6 +1,8 @@
 package com.aethernadev.sunny;
 
 import com.aethernadev.sunny.base.UseCase;
+import com.aethernadev.sunny.dao.WeatherDao;
+import com.aethernadev.sunny.data.Location;
 
 import java.util.List;
 

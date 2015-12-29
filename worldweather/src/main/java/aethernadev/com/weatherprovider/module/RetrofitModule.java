@@ -1,6 +1,6 @@
 package aethernadev.com.weatherprovider.module;
 
-import com.aethernadev.sunny.WeatherDao;
+import com.aethernadev.sunny.dao.WeatherDao;
 
 import javax.inject.Singleton;
 

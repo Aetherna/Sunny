@@ -9,10 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.aethernadev.sunny.Location;
+import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.R;
-
-import java.util.List;
 
 /**
  * Created by Aetherna.
@@ -29,14 +27,22 @@ public class CitiesListAdapter extends ArrayAdapter<Location> {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View rowView = getViewHolder(position, convertView);
-
         ViewHolder holder = (ViewHolder) rowView.getTag();
         Location location = getItem(position);
 
-        holder.name.setText(location.getName());
-        holder.details.setText(location.getRegion());
+        fillHolder(holder, location);
 
         return rowView;
+    }
+
+    private void fillHolder(ViewHolder holder, Location location) {
+        holder.name.setText(location.getName());
+
+        String details = location.getRegion();
+        if (details.isEmpty()) {
+            details = location.getCountry();
+        }
+        holder.details.setText(details);
     }
 
     @NonNull

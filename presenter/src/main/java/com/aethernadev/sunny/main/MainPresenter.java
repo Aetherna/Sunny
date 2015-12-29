@@ -1,5 +1,6 @@
 package com.aethernadev.sunny.main;
 
+import com.aethernadev.sunny.InitDefaultSettingsUseCase;
 import com.aethernadev.sunny.base.UseCaseExecutor;
 
 import javax.inject.Inject;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
  */
 public class MainPresenter {
 
+    InitDefaultSettingsUseCase initDefaultSettingsUseCase;
     private UseCaseExecutor executor;
 
     @Inject

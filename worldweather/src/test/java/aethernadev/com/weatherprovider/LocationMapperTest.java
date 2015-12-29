@@ -1,6 +1,6 @@
 package aethernadev.com.weatherprovider;
 
-import com.aethernadev.sunny.Location;
+import com.aethernadev.sunny.data.Location;
 
 import org.junit.Before;
 import org.junit.Test;

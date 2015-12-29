@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.aethernadev.sunny.Location;
+import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.R;
 import com.aethernadev.sunny.SunnyApp;
 import com.aethernadev.sunny.settings.SettingsCitiesPresenter;
@@ -27,10 +27,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class SettingsCitiesFragment extends Fragment implements CitiesListAdapter.LocationDeletedListener, SettingsCitiesPresenter.SettingsUI {
+public class SettingsCitiesFragment extends Fragment implements CitiesListAdapter.LocationDeletedListener, SelectLocationDialog.LocationSelectedListener, SettingsCitiesPresenter.SettingsUI {
 
 
     public static final String SELECTED_LOCATIONS = "SelectedLocations";
+    public static final String SELECTION_DIALOG = "dialog";
     @Bind(R.id.restore_settings_to_default)
     Button restoreToDefaults;
     @Bind(R.id.city_input)
@@ -61,9 +62,6 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            //todo restoreCities after rotate
-        }
     }
 
     @Override
@@ -122,14 +120,47 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
         loading.setVisibility(View.GONE);
     }
 
+    @Override
+    public void hideError() {
+        errorMessage.setText("");
+    }
+
+    @Override
+    public void selectOneFromLocations(List<Location> locations) {
+        SelectLocationDialog dialogFrag = SelectLocationDialog.getInstance(locations);
+        dialogFrag.setTargetFragment(this, 1);
+        dialogFrag.show(getFragmentManager().beginTransaction(), SELECTION_DIALOG);
+    }
+
     @OnClick(R.id.search_city)
     public void searchCity(View view) {
-        presenter.onLocationSearch(cityInput.getText().toString());
+
+        if (validateInputField()) {
+            presenter.onLocationSearch(cityInput.getText().toString());
+        }
+    }
+
+    private boolean validateInputField() {
+        hideError();
+        if (cityInput.getText().toString().trim().isEmpty()) {
+            showError(getActivity().getString(R.string.insert_value));
+            return false;
+        }
+        return true;
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(SELECTED_LOCATIONS, (Serializable) presenter.getSelectedLocations());
+    }
+
+    @Override
+    public void onLocationSelected(Location location) {
+        presenter.addSelectedLocation(location);
+    }
+
+    public List<Location> getUserSelectedLocations() {
+        return presenter.getSelectedLocations();
     }
 }

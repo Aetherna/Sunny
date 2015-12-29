@@ -1,6 +1,6 @@
 package aethernadev.com.weatherprovider.mapper;
 
-import com.aethernadev.sunny.Location;
+import com.aethernadev.sunny.data.Location;
 
 import javax.inject.Inject;
 

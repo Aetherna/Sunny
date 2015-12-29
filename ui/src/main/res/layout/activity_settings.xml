@@ -9,17 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.aethernadev.sunny.settings.SettingsActivity">
 
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/settings_pages"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_above="@+id/settings_buttons_panel">-->
-
-    <!--</android.support.v4.view.ViewPager>-->
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/settings_buttons_panel"
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:id="@+id/settings_buttons_panel"
@@ -32,8 +27,8 @@
             android:id="@+id/cancel_settings"
             style="@style/ButtonSecondaryAction"
             android:layout_width="1dp"
-            android:layout_marginRight="@dimen/margin_button"
             android:layout_marginEnd="@dimen/margin_button"
+            android:layout_marginRight="@dimen/margin_button"
             android:layout_weight="1"
             android:text="@string/cancel" />
 
@@ -41,9 +36,9 @@
             android:id="@+id/save_settings"
             style="@style/ButtonMainAction"
             android:layout_width="1dp"
-            android:layout_weight="1"
             android:layout_marginLeft="@dimen/margin_button"
             android:layout_marginStart="@dimen/margin_button"
+            android:layout_weight="1"
             android:text="@string/save" />
     </LinearLayout>
 </RelativeLayout>

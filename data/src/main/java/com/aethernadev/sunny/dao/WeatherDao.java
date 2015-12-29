@@ -1,4 +1,6 @@
-package com.aethernadev.sunny;
+package com.aethernadev.sunny.dao;
+
+import com.aethernadev.sunny.data.Location;
 
 import java.util.List;
 
