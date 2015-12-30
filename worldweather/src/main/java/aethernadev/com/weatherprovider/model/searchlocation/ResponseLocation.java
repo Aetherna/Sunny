@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import aethernadev.com.weatherprovider.model.SingleValue;
+
 /**
  * Created by Aetherna.
  */
@@ -18,17 +20,6 @@ public class ResponseLocation {
     private int population;
     private List<SingleValue> weatherUrl;
 
-    public static class SingleValue {
-        private String value;
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-    }
 
     public List<SingleValue> getName() {
         return name;

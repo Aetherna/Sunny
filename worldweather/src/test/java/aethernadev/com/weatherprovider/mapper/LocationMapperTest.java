@@ -1,4 +1,4 @@
-package aethernadev.com.weatherprovider;
+package aethernadev.com.weatherprovider.mapper;
 
 import com.aethernadev.sunny.data.Location;
 

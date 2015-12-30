@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import aethernadev.com.weatherprovider.model.SingleValue;
 import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 
 /**
@@ -17,7 +18,7 @@ public class SingleValuesToStringConverter {
     public SingleValuesToStringConverter() {
     }
 
-    public String convertToString(List<ResponseLocation.SingleValue> singleValues) {
+    public String convertToString(List<SingleValue> singleValues) {
         if (singleValues == null || singleValues.isEmpty()) {
             return EMPTY_STRING;
         }

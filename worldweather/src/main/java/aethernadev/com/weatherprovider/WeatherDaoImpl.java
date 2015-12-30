@@ -2,6 +2,7 @@ package aethernadev.com.weatherprovider;
 
 import android.support.annotation.NonNull;
 
+import com.aethernadev.sunny.data.Forecast;
 import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.dao.WeatherDao;
 
@@ -13,6 +14,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import aethernadev.com.weatherprovider.mapper.LocationMapper;
+import aethernadev.com.weatherprovider.mapper.QueryCoordinates;
 import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 import aethernadev.com.weatherprovider.model.searchlocation.SearchLocationResponse;
 import aethernadev.com.weatherprovider.model.searchlocation.SearchResult;
@@ -32,9 +34,12 @@ public class WeatherDaoImpl implements WeatherDao {
     private final static String JSON_RESPONSE_FORMAT = "JSON";
     private final static String NUM_OF_RESULTS_KEY = "num_of_results";
     private final static String MAX_NUM_OF_RESULTS = "30";
+    private final static String NUM_OF_DAYS_KEY = "num_of_days";
+    private final static String NUM_OF_DAYS = "5";
 
     private WeatherService weatherService;
     private final LocationMapper mapper;
+    private QueryCoordinates queryCoordinates;
 
     @Inject
     public WeatherDaoImpl(Retrofit retrofit, LocationMapper mapper) {
@@ -42,7 +47,7 @@ public class WeatherDaoImpl implements WeatherDao {
         this.weatherService = retrofit.create(WeatherService.class);
     }
 
-     @Override
+    @Override
     public Observable<List<Location>> findAvailableLocations(final String locationName) {
         Map<String, String> queryArguments = new HashMap<>(); //todo
         queryArguments.put(API_KEY, "239fd36834e8ad762c8dca32c7f42");
@@ -57,6 +62,16 @@ public class WeatherDaoImpl implements WeatherDao {
                 return searchResultToLocations(searchLocationResponse);
             }
         });
+    }
+
+    @Override
+    public Observable<Forecast> getForecast(Location location) {
+        Map<String, String> queryArguments = new HashMap<>();
+        queryArguments.put(API_KEY, "239fd36834e8ad762c8dca32c7f42");
+        queryArguments.put(RESPONSE_FORMAT_KEY, JSON_RESPONSE_FORMAT);
+        queryArguments.put(NUM_OF_DAYS_KEY, NUM_OF_DAYS);
+        queryArguments.put(QUERY, queryCoordinates.from(location));
+        return null;
     }
 
     @NonNull

@@ -1,4 +1,4 @@
-package aethernadev.com.weatherprovider;
+package aethernadev.com.weatherprovider.mapper;
 
 import org.junit.Before;
 import org.junit.Test;
