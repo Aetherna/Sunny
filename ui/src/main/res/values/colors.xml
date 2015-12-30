@@ -6,5 +6,12 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorDelete">#ff1100</color>
     <color name="colorButton">#0066ff</color>
+    <color name="colorButtonFocused">#2244dd</color>
+    <color name="colorButtonPressed">#1122aa</color>
+    <color name="colorButtonDisabled">#888888</color>
     <color name="colorButtonText">#ffffff</color>
+    <color name="colorDisabledButtonText">#dddddd</color>
+    <color name="colorPressedButtonText">#000000</color>
+    <color name="colorButtonSecondary">#888888</color>
+    <color name="colorButtonSecondaryPressed">#666666</color>
 </resources>

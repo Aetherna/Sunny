@@ -37,7 +37,7 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
     @Bind(R.id.city_input)
     EditText cityInput;
     @Bind(R.id.search_city)
-    ImageButton searchCity;
+    Button searchCity;
     @Bind(R.id.selected_cities)
     ListView selectedCities;
     @Bind(R.id.loading)

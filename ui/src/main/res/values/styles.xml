@@ -40,22 +40,26 @@
     <style name="Button" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">@dimen/padding_image_button</item>
-        <item name="android:textColor">@color/colorButtonText</item>
+        <item name="android:textColor">@drawable/button_text_color_selector</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingLeft">@dimen/default_padding</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
     </style>
 
     <style name="ButtonMainAction" parent="Button">
-        <item name="android:background">@drawable/button_main_action</item>
+        <item name="android:background">@drawable/main_action_button_bg_selector</item>
     </style>
 
     <style name="ButtonSecondaryAction" parent="Button">
-        <item name="android:background">@drawable/button_secondary_action</item>
+        <item name="android:background">@drawable/second_action_button_bg_selector</item>
     </style>
 
     <style name="ButtonDelete" parent="Button">
         <item name="android:background">@drawable/button_delete</item>
         <item name="android:contentDescription">@string/delete</item>
-        <item name="android:src">@drawable/abc_ic_clear_mtrl_alpha</item>
+        <item name="android:src">@drawable/ic_delete</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
     </style>
 
 </resources>
