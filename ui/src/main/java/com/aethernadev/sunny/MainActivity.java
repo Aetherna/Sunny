@@ -2,19 +2,30 @@ package com.aethernadev.sunny;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.aethernadev.sunny.main.WeatherPagerAdapter;
 import com.aethernadev.sunny.main.firstlaunch.FirstInitPresenter;
 import com.aethernadev.sunny.settings.SettingsActivity;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends ActionBarActivity implements FirstInitPresenter.UI {
+public class MainActivity extends AppCompatActivity implements FirstInitPresenter.UI {
+
+    protected WeatherPagerAdapter weatherPagesAdapter;
+    @Bind(R.id.container)
+    protected ViewPager viewPager;
+    @Bind(R.id.tabLayout)
+    protected TabLayout tabLayout;
 
     @Inject
     FirstInitPresenter firstInitPresenter;
@@ -28,16 +39,6 @@ public class MainActivity extends ActionBarActivity implements FirstInitPresente
 
         firstInitPresenter.attachUI(this);
         firstInitPresenter.initOnFirstLaunch();
-
-
-        findViewById(R.id.go).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -47,7 +48,29 @@ public class MainActivity extends ActionBarActivity implements FirstInitPresente
 
     @Override
     public void startApplication() {
-        Log.d("launch the rest uff", "dasdsa");
+        weatherPagesAdapter = new WeatherPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(weatherPagesAdapter);
+
+        tabLayout.setTabsFromPagerAdapter(weatherPagesAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
