@@ -11,9 +11,6 @@ public interface SettingsDao {
 
     boolean saveUserLocations(List<Location> locations);
 
-    boolean saveDefaultLocations(List<Location> locations);
-
     List<Location> getUserLocations();
 
-    List<Location> getDefaultLocations();
 }

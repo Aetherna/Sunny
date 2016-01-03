@@ -3,6 +3,8 @@ package com.aethernadev.sunny.dagger;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.aethernadev.sunny.main.WeatherFormat;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -12,12 +14,12 @@ import dagger.Provides;
  * Created by Aetherna on 2015-12-30.
  */
 @Module
-public class PreferencesModule {
+public class AndroidModule {
 
     public static final String SUNNY_APP_PREFERENCE_FILE = "SUNNY_APP_PREFERENCE_FILE";
     private Context context;
 
-    public PreferencesModule(Context context) {
+    public AndroidModule(Context context) {
         this.context = context;
     }
 
@@ -25,5 +27,11 @@ public class PreferencesModule {
     @Provides
     SharedPreferences preferences() {
         return context.getSharedPreferences(SUNNY_APP_PREFERENCE_FILE, Context.MODE_PRIVATE);
+    }
+
+    @Singleton
+    @Provides
+    WeatherFormat weatherFormat() {
+        return new WeatherFormat(context);
     }
 }

@@ -8,7 +8,7 @@ import com.aethernadev.sunny.dagger.DaggerAppComponent;
 import com.aethernadev.sunny.dagger.DaggerDaoComponent;
 import com.aethernadev.sunny.dagger.DaggerUseCaseComponent;
 import com.aethernadev.sunny.dagger.DaoComponent;
-import com.aethernadev.sunny.dagger.PreferencesModule;
+import com.aethernadev.sunny.dagger.AndroidModule;
 import com.aethernadev.sunny.dagger.UseCaseComponent;
 
 /**
@@ -31,7 +31,7 @@ public class SunnyApp extends Application {
                 .build();
         appComponent = DaggerAppComponent.builder()
                 .useCaseComponentBase(useCaseComponent)
-                .preferencesModule(new PreferencesModule(this))
+                .androidModule(new AndroidModule(this))
                 .build();
     }
 

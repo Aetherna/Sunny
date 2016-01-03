@@ -1,7 +1,6 @@
 package com.aethernadev.sunny.settings;
 
 import com.aethernadev.sunny.data.Location;
-import com.aethernadev.sunny.SaveUserSettingsUseCase;
 import com.aethernadev.sunny.base.BasePresenter;
 import com.aethernadev.sunny.base.UIAction;
 import com.aethernadev.sunny.base.UseCaseExecutor;

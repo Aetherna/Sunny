@@ -1,11 +1,10 @@
 package com.aethernadev.sunny.dagger;
 
-import com.aethernadev.sunny.FindLocationsUseCase;
-import com.aethernadev.sunny.GetDefaultSettingsUseCase;
-import com.aethernadev.sunny.GetUserSettingsUseCase;
-import com.aethernadev.sunny.InitDefaultSettingsUseCase;
-import com.aethernadev.sunny.SaveUserSettingsUseCase;
+import com.aethernadev.sunny.main.forecast.GetForecastUseCase;
 import com.aethernadev.sunny.module.UseCaseComponentBase;
+import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
+import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
+import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
 import com.aethernadev.sunny.usecaseexecutor.AsyncUseCaseExecutor;
 
 import javax.inject.Singleton;
@@ -25,11 +24,9 @@ public interface UseCaseComponent extends UseCaseComponentBase {
 
     SaveUserSettingsUseCase saveUserSettingsUseCase();
 
-    GetDefaultSettingsUseCase getDefaultSettingsUseCase();
-
     GetUserSettingsUseCase getUserSettingsUseCase();
 
-    InitDefaultSettingsUseCase initDefaultSettingsUseCase();
-
     AsyncUseCaseExecutor useCaseExecutor();
+
+    GetForecastUseCase getForecastUseCase();
 }

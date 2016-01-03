@@ -15,9 +15,11 @@ import javax.inject.Inject;
 
 import aethernadev.com.weatherprovider.mapper.LocationMapper;
 import aethernadev.com.weatherprovider.mapper.QueryCoordinates;
+import aethernadev.com.weatherprovider.mapper.forecast.ForecastMapper;
 import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 import aethernadev.com.weatherprovider.model.searchlocation.SearchLocationResponse;
 import aethernadev.com.weatherprovider.model.searchlocation.SearchResult;
+import aethernadev.com.weatherprovider.model.weatherforecast.WeatherForecastResponse;
 import aethernadev.com.weatherprovider.service.WeatherService;
 import retrofit.Retrofit;
 import rx.Observable;
@@ -38,12 +40,15 @@ public class WeatherDaoImpl implements WeatherDao {
     private final static String NUM_OF_DAYS = "5";
 
     private WeatherService weatherService;
-    private final LocationMapper mapper;
+    private final LocationMapper locationMapper;
+    private final ForecastMapper forecastMapper;
     private QueryCoordinates queryCoordinates;
 
     @Inject
-    public WeatherDaoImpl(Retrofit retrofit, LocationMapper mapper) {
-        this.mapper = mapper;
+    public WeatherDaoImpl(Retrofit retrofit, LocationMapper locationMapper, ForecastMapper forecastMapper, QueryCoordinates queryCoordinates) {
+        this.locationMapper = locationMapper;
+        this.forecastMapper = forecastMapper;
+        this.queryCoordinates = queryCoordinates;
         this.weatherService = retrofit.create(WeatherService.class);
     }
 
@@ -64,16 +69,6 @@ public class WeatherDaoImpl implements WeatherDao {
         });
     }
 
-    @Override
-    public Observable<Forecast> getForecast(Location location) {
-        Map<String, String> queryArguments = new HashMap<>();
-        queryArguments.put(API_KEY, "239fd36834e8ad762c8dca32c7f42");
-        queryArguments.put(RESPONSE_FORMAT_KEY, JSON_RESPONSE_FORMAT);
-        queryArguments.put(NUM_OF_DAYS_KEY, NUM_OF_DAYS);
-        queryArguments.put(QUERY, queryCoordinates.from(location));
-        return null;
-    }
-
     @NonNull
     private List<Location> searchResultToLocations(SearchLocationResponse searchLocationResponse) {
         SearchResult searchResult = searchLocationResponse.getSearchResult();
@@ -83,10 +78,26 @@ public class WeatherDaoImpl implements WeatherDao {
             return locations;
         }
         for (ResponseLocation responseLocation : searchResult.getLocations()) {
-            locations.add(mapper.mapFrom(responseLocation));
+            locations.add(locationMapper.mapFrom(responseLocation));
         }
 
         return locations;
+    }
+
+    @Override
+    public Observable<Forecast> getForecast(Location location) {
+        Map<String, String> queryArguments = new HashMap<>();
+        queryArguments.put(API_KEY, "239fd36834e8ad762c8dca32c7f42"); //todo
+        queryArguments.put(RESPONSE_FORMAT_KEY, JSON_RESPONSE_FORMAT);
+        queryArguments.put(NUM_OF_DAYS_KEY, NUM_OF_DAYS);
+        queryArguments.put(QUERY, queryCoordinates.from(location));
+
+        return weatherService.getWeatherForecast(queryArguments).map(new Func1<WeatherForecastResponse, Forecast>() {
+            @Override
+            public Forecast call(WeatherForecastResponse weatherForecastResponse) {
+                return forecastMapper.from(weatherForecastResponse);
+            }
+        });
     }
 
 }

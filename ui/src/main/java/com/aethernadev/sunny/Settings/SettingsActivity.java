@@ -1,10 +1,12 @@
 package com.aethernadev.sunny.settings;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -20,8 +22,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SettingsActivity extends ActionBarActivity implements SettingsMainPresenter.UI {
+public class SettingsActivity extends AppCompatActivity implements SettingsMainPresenter.UI {
 
+    public static final int CHANGED_SETTINGS = 9999;
     @Bind(R.id.content)
     FrameLayout layout;
 
@@ -56,6 +59,7 @@ public class SettingsActivity extends ActionBarActivity implements SettingsMainP
 
     @OnClick(R.id.cancel_settings)
     public void cancel(View view) {
+        setResult(RESULT_CANCELED);
         finish();
     }
 
@@ -66,7 +70,20 @@ public class SettingsActivity extends ActionBarActivity implements SettingsMainP
 
     @Override
     public void closeSettings() {
-        Toast.makeText(this, R.string.settings_saved, Toast.LENGTH_SHORT).show();
+        Snackbar.make(layout, R.string.settings_saved, Snackbar.LENGTH_SHORT).show();
+        setResult(CHANGED_SETTINGS);
         finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.attachUI(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.detachUI();
     }
 }

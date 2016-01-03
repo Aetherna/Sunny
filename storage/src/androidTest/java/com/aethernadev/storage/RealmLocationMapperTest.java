@@ -4,7 +4,6 @@ import android.test.AndroidTestCase;
 
 import com.aethernadev.storage.location.RealmLocation;
 import com.aethernadev.storage.location.RealmLocationMapper;
-import com.aethernadev.storage.location.SettingType;
 import com.aethernadev.sunny.data.Location;
 
 import junit.framework.Assert;
@@ -160,7 +159,6 @@ public class RealmLocationMapperTest extends AndroidTestCase {
         source.setCountry(testCountry);
         source.setLatitude(testLatitude);
         source.setLongitude(testLongitude);
-        source.setSettingType(SettingType.DEFAULT.getType());
 
         //when
         Location target = objectUnderTest.mapToLocation(source);

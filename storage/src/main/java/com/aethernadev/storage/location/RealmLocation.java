@@ -12,7 +12,6 @@ public class RealmLocation extends RealmObject {
     private String country;
     private double latitude;
     private double longitude;
-    private int settingType;
 
     public String getName() {
         return name;
@@ -54,11 +53,4 @@ public class RealmLocation extends RealmObject {
         this.longitude = longitude;
     }
 
-    public int getSettingType() {
-        return settingType;
-    }
-
-    public void setSettingType(int settingType) {
-        this.settingType = settingType;
-    }
 }

@@ -8,4 +8,8 @@
     <dimen name="text_size_location_detail">14dp</dimen>
     <dimen name="default_padding">8dp</dimen>
     <dimen name="radius_button_shape">2dp</dimen>
+    <dimen name="default_margin">12dp</dimen>
+    <dimen name="textSizeDay">18sp</dimen>
+    <dimen name="textSizeNight">14sp</dimen>
+    <dimen name="textSizeNow">32sp</dimen>
 </resources>

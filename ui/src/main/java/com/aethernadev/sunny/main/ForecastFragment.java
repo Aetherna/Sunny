@@ -1,0 +1,126 @@
+package com.aethernadev.sunny.main;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.aethernadev.sunny.R;
+import com.aethernadev.sunny.SunnyApp;
+import com.aethernadev.sunny.data.CurrentConditions;
+import com.aethernadev.sunny.data.DayWeather;
+import com.aethernadev.sunny.data.Forecast;
+import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.main.dailyforecast.DailyForecastAdapter;
+import com.aethernadev.sunny.main.forecast.ForecastPresenter;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+/**
+ * Created by Aetherna on 2015-12-30.
+ */
+public class ForecastFragment extends Fragment implements ForecastPresenter.UI {
+
+    private static final int TODAY = 0;
+    @Inject
+    protected ForecastPresenter presenter;
+    @Inject
+    WeatherFormat weatherFormat;
+
+    @Bind(R.id.loading_forecast)
+    protected ProgressBar progressBar;
+    @Bind(R.id.current_temp)
+    TextView currentTemperature;
+    @Bind(R.id.pressure)
+    TextView pressure;
+    @Bind(R.id.weather_description)
+    TextView weatherDescription;
+    @Bind(R.id.dailyForecast)
+    ListView listView;
+
+
+    private Location location;
+
+    public static final String LOCATION = "location";
+    private View rootView;
+
+    public static ForecastFragment newInstance(Location location) {
+
+        ForecastFragment fragment = new ForecastFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(LOCATION, location);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        rootView = inflater.inflate(R.layout.fragment_forecast, container, false);
+        ButterKnife.bind(this, rootView);
+        ((SunnyApp) getActivity().getApplication()).getAppComponent().inject(this);
+
+        location = (Location) getArguments().getSerializable(LOCATION);
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        presenter.loadForecast(location);
+        presenter.attachUI(this);
+    }
+
+    @Override
+    public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void showForecast(Forecast forecast) {
+        progressBar.setVisibility(View.GONE);
+        initTodayView(forecast.getCurrentConditions());
+        initDailyForecast(forecast.getDailyForecast());
+    }
+
+
+    private void initTodayView(CurrentConditions currentConditions) {
+
+        int tempNow = currentConditions.getTemperatureNowCelsius();
+        currentTemperature.setText(weatherFormat.formatToCelsius(tempNow));
+        if (tempNow < 0) {
+            currentTemperature.setTextColor(getContext().getResources().getColor(R.color.colorNight));
+        }
+
+        pressure.setText(weatherFormat.formatToPascal(currentConditions.getPressure()));
+        weatherDescription.setText(currentConditions.getWeatherDescription());
+    }
+
+
+    private void initDailyForecast(List<DayWeather> dailyForecast) {
+        dailyForecast.remove(TODAY);
+        DailyForecastAdapter adapter = new DailyForecastAdapter(getContext(), dailyForecast);
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void showError(String error) {
+        Snackbar.make(rootView, error, Snackbar.LENGTH_SHORT).show();
+    }
+
+
+}

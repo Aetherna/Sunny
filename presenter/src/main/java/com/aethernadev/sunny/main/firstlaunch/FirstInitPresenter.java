@@ -2,14 +2,13 @@ package com.aethernadev.sunny.main.firstlaunch;
 
 import android.content.SharedPreferences;
 
-import com.aethernadev.sunny.InitDefaultSettingsUseCase;
 import com.aethernadev.sunny.base.BasePresenter;
 import com.aethernadev.sunny.base.UIAction;
 import com.aethernadev.sunny.base.UseCaseExecutor;
 import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -22,14 +21,14 @@ public class FirstInitPresenter extends BasePresenter<FirstInitPresenter.UI> {
 
     public static final String FIRST_LAUNCH_KEY = "firstLaunchKey";
 
-    InitDefaultSettingsUseCase initDefaultSettingsUseCase;
+    SaveUserSettingsUseCase saveUserSettingsUseCase;
     UseCaseExecutor executor;
     SharedPreferences preferences;
     DefaultSettings defaultSettings;
 
     @Inject
-    public FirstInitPresenter(InitDefaultSettingsUseCase initDefaultSettingsUseCase, UseCaseExecutor executor, SharedPreferences preferences, DefaultSettings defaultSettings) {
-        this.initDefaultSettingsUseCase = initDefaultSettingsUseCase;
+    public FirstInitPresenter(SaveUserSettingsUseCase saveUserSettingsUseCase, UseCaseExecutor executor, SharedPreferences preferences, DefaultSettings defaultSettings) {
+        this.saveUserSettingsUseCase = saveUserSettingsUseCase;
         this.executor = executor;
         this.preferences = preferences;
         this.defaultSettings = defaultSettings;
@@ -59,7 +58,7 @@ public class FirstInitPresenter extends BasePresenter<FirstInitPresenter.UI> {
 
         List<Location> defaultLocations = defaultSettings.getLocations();
 
-        executor.wrap(initDefaultSettingsUseCase, defaultLocations)
+        executor.wrap(saveUserSettingsUseCase, defaultLocations)
                 .subscribe(new Action1<Boolean>() {
                     @Override
                     public void call(Boolean aBoolean) {

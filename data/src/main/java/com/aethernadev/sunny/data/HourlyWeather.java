@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
  */
 public class HourlyWeather {
     private DateTime time;
-    private double temperature;
+    private int temperature;
 
     public DateTime getTime() {
         return time;
@@ -17,11 +17,11 @@ public class HourlyWeather {
         this.time = time;
     }
 
-    public double getTemperature() {
+    public int getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 }

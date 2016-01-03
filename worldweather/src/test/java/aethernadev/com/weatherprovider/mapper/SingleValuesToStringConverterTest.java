@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import aethernadev.com.weatherprovider.mapper.SingleValuesToStringConverter;
+import aethernadev.com.weatherprovider.model.SingleValue;
 import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 
 import static com.google.common.truth.Truth.*;
@@ -16,17 +16,17 @@ import static com.google.common.truth.Truth.*;
  */
 public class SingleValuesToStringConverterTest {
 
-    SingleValuesToStringConverter testObject;
+    SingleValueToString testObject;
 
     @Before
     public void setUp() throws Exception {
-        testObject = new SingleValuesToStringConverter();
+        testObject = new SingleValueToString();
     }
 
     @Test
     public void shouldReturnEmptyStringOnNullList() {
         //having
-        List<ResponseLocation.SingleValue> nullSingleValues = null;
+        List<SingleValue> nullSingleValues = null;
         //when
         String result = testObject.convertToString(nullSingleValues);
         //then
@@ -36,7 +36,7 @@ public class SingleValuesToStringConverterTest {
     @Test
     public void shouldReturnEmptyStringOnEmptyList() {
         //having
-        List<ResponseLocation.SingleValue> empty = new ArrayList<>();
+        List< SingleValue> empty = new ArrayList<>();
         //when
         String result = testObject.convertToString(empty);
         //then
@@ -46,7 +46,7 @@ public class SingleValuesToStringConverterTest {
     @Test
     public void shouldReturnEmptyStringOnNullFirstElement() {
         //having
-        List<ResponseLocation.SingleValue> values = new ArrayList<>();
+        List< SingleValue> values = new ArrayList<>();
         values.add(null);
         //when
         String result = testObject.convertToString(values);
@@ -57,8 +57,8 @@ public class SingleValuesToStringConverterTest {
     @Test
     public void shouldReturnEmptyStringOnFirstElementNullValue() {
         //having
-        List<ResponseLocation.SingleValue> values = new ArrayList<>();
-        ResponseLocation.SingleValue nullValued = new ResponseLocation.SingleValue();
+        List< SingleValue> values = new ArrayList<>();
+         SingleValue nullValued = new SingleValue();
         nullValued.setValue(null);
         values.add(nullValued);
         //when
@@ -70,13 +70,13 @@ public class SingleValuesToStringConverterTest {
     @Test
     public void shouldReturnValueFromFirstElement(){
         //having
-        ResponseLocation.SingleValue firstSingleValue = new ResponseLocation.SingleValue();
+        SingleValue firstSingleValue = new SingleValue();
         firstSingleValue.setValue("London");
 
-        ResponseLocation.SingleValue secondSingleValue = new ResponseLocation.SingleValue();
+        SingleValue secondSingleValue = new SingleValue();
         secondSingleValue.setValue("Warsaw");
 
-        List<ResponseLocation.SingleValue> values = new ArrayList<>();
+        List<SingleValue> values = new ArrayList<>();
         values.add(firstSingleValue);
         values.add(secondSingleValue);
 

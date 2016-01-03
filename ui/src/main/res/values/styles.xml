@@ -13,9 +13,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ErrorMessage">
         <item name="android:layout_height">wrap_content</item>
@@ -61,5 +61,42 @@
         <item name="android:paddingLeft">0dp</item>
         <item name="android:paddingRight">0dp</item>
     </style>
+
+    <style name="TextViewDayTemperature">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorDay</item>
+        <item name="android:textSize">@dimen/textSizeDay</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+
+    <style name="TextViewNightTemperature">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorNight</item>
+        <item name="android:textSize">@dimen/textSizeNight</item>
+        <item name="android:paddingTop">@dimen/default_padding</item>
+        <item name="android:minEms">2</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+    </style>
+
+    <style name="TextViewTemperatureNow">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorDay</item>
+        <item name="android:textSize">@dimen/textSizeNow</item>
+        <item name="android:paddingTop">@dimen/default_padding</item>
+        <item name="android:minEms">2</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+    </style>
+
+    <style name="NoCities">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorButtonSecondary</item>
+    </style>
+
+
 
 </resources>

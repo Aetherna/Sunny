@@ -1,4 +1,4 @@
-package com.aethernadev.sunny;
+package com.aethernadev.sunny.searchlocation;
 
 import com.aethernadev.sunny.base.UseCase;
 import com.aethernadev.sunny.dao.WeatherDao;

@@ -11,10 +11,10 @@ import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
  */
 public class LocationMapper {
 
-    SingleValuesToStringConverter converter;
+    SingleValueToString converter;
 
     @Inject
-    public LocationMapper(SingleValuesToStringConverter converter) {
+    public LocationMapper(SingleValueToString converter) {
         this.converter = converter;
     }
 

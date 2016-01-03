@@ -1,4 +1,4 @@
-package com.aethernadev.sunny;
+package com.aethernadev.sunny.settings;
 
 import com.aethernadev.sunny.base.UseCase;
 

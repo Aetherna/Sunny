@@ -5,7 +5,7 @@
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorDelete">#ff1100</color>
-    <color name="colorButton">#0066ff</color>
+    <color name="colorButton">#4878c8</color>
     <color name="colorButtonFocused">#2244dd</color>
     <color name="colorButtonPressed">#1122aa</color>
     <color name="colorButtonDisabled">#888888</color>
@@ -14,4 +14,6 @@
     <color name="colorPressedButtonText">#000000</color>
     <color name="colorButtonSecondary">#888888</color>
     <color name="colorButtonSecondaryPressed">#666666</color>
+    <color name="colorDay">#ff6c00</color>
+    <color name="colorNight">#4878c8</color>
 </resources>

@@ -3,10 +3,11 @@ package com.aethernadev.sunny.data;
 /**
  * Created by Aetherna on 2015-12-30.
  */
-public class CurrentDetails {
+public class CurrentConditions {
 
     private int temperatureNowCelsius;
-    private int pressure;
+    private double pressure;
+    private String weatherDescription;
 
     public int getTemperatureNowCelsius() {
         return temperatureNowCelsius;
@@ -16,11 +17,19 @@ public class CurrentDetails {
         this.temperatureNowCelsius = temperatureNowCelsius;
     }
 
-    public int getPressure() {
+    public double getPressure() {
         return pressure;
     }
 
-    public void setPressure(int pressure) {
+    public void setPressure(double pressure) {
         this.pressure = pressure;
+    }
+
+    public String getWeatherDescription() {
+        return weatherDescription;
+    }
+
+    public void setWeatherDescription(String weatherDescription) {
+        this.weatherDescription = weatherDescription;
     }
 }

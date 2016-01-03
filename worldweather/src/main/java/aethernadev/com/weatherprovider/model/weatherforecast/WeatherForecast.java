@@ -15,9 +15,11 @@ import aethernadev.com.weatherprovider.model.weatherforecast.weather.Weather;
 public class WeatherForecast {
     @SerializedName("ClimateAverages")
     private List<ClimateAverages> climateAverages;
-    private List<CurrentCondition> current_condition;
+    @SerializedName("current_condition")
+    private List<CurrentCondition> currentConditions;
     private List<Request> request;
-    private List<Weather> weather;
+    @SerializedName("weather")
+    private List<Weather> daysForecasts;
 
     public List<ClimateAverages> getClimateAverages() {
         return climateAverages;
@@ -27,12 +29,12 @@ public class WeatherForecast {
         this.climateAverages = climateAverages;
     }
 
-    public List<CurrentCondition> getCurrent_condition() {
-        return current_condition;
+    public List<CurrentCondition> getCurrentConditions() {
+        return currentConditions;
     }
 
-    public void setCurrent_condition(List<CurrentCondition> current_condition) {
-        this.current_condition = current_condition;
+    public void setCurrentConditions(List<CurrentCondition> currentConditions) {
+        this.currentConditions = currentConditions;
     }
 
     public List<Request> getRequest() {
@@ -43,11 +45,11 @@ public class WeatherForecast {
         this.request = request;
     }
 
-    public List<Weather> getWeather() {
-        return weather;
+    public List<Weather> getDaysForecasts() {
+        return daysForecasts;
     }
 
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
+    public void setDaysForecasts(List<Weather> daysForecasts) {
+        this.daysForecasts = daysForecasts;
     }
 }

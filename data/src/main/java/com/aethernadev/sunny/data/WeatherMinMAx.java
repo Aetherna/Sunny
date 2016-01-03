@@ -3,7 +3,7 @@ package com.aethernadev.sunny.data;
 /**
  * Created by Aetherna on 2015-12-30.
  */
-public class WeatherDetails {
+public class WeatherMinMAx {
 
     private String description;
     private int temperatureCelsiusMax;

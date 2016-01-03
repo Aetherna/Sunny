@@ -7,13 +7,22 @@ import java.util.List;
  */
 public class Forecast {
 
-    private List<DayWeather> daysForecasts;
+    private List<DayWeather> dailyForecast;
+    private CurrentConditions currentConditions;
 
-    public List<DayWeather> getDaysForecasts() {
-        return daysForecasts;
+    public List<DayWeather> getDailyForecast() {
+        return dailyForecast;
     }
 
-    public void setDaysForecasts(List<DayWeather> daysForecasts) {
-        this.daysForecasts = daysForecasts;
+    public void setDailyForecasts(List<DayWeather> daysForecasts) {
+        this.dailyForecast = daysForecasts;
+    }
+
+    public CurrentConditions getCurrentConditions() {
+        return currentConditions;
+    }
+
+    public void setCurrentConditions(CurrentConditions currentConditions) {
+        this.currentConditions = currentConditions;
     }
 }

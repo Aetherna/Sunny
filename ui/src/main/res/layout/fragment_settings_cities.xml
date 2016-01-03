@@ -6,13 +6,8 @@
               tools:context="com.aethernadev.sunny.settings.cities.SettingsCitiesFragment">
 
 
-    <Button
-        android:id="@+id/restore_settings_to_default"
-        style="@style/ButtonSecondaryAction"
-        android:layout_gravity="right"
-        android:text="@string/restore_defaults"/>
-
     <TextView
+        style="@style/LocationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_city"/>

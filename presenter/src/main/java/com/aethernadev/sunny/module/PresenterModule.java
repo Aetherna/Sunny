@@ -2,17 +2,17 @@ package com.aethernadev.sunny.module;
 
 import android.content.SharedPreferences;
 
-import com.aethernadev.sunny.FindLocationsUseCase;
-import com.aethernadev.sunny.GetDefaultSettingsUseCase;
-import com.aethernadev.sunny.GetUserSettingsUseCase;
-import com.aethernadev.sunny.InitDefaultSettingsUseCase;
-import com.aethernadev.sunny.SaveUserSettingsUseCase;
 import com.aethernadev.sunny.base.UseCaseExecutor;
+import com.aethernadev.sunny.main.MainPresenter;
 import com.aethernadev.sunny.main.firstlaunch.DefaultSettings;
 import com.aethernadev.sunny.main.firstlaunch.FirstInitPresenter;
+import com.aethernadev.sunny.main.forecast.ForecastPresenter;
+import com.aethernadev.sunny.main.forecast.GetForecastUseCase;
+import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
+import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
+import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
 import com.aethernadev.sunny.settings.SettingsCitiesPresenter;
 import com.aethernadev.sunny.settings.SettingsMainPresenter;
-import com.aethernadev.sunny.usecaseexecutor.AsyncUseCaseExecutor;
 
 import javax.inject.Singleton;
 
@@ -33,19 +33,30 @@ public class PresenterModule {
 
     @Singleton
     @Provides
-    SettingsCitiesPresenter provideSettingsPresenter(FindLocationsUseCase findLocationsUseCase, GetUserSettingsUseCase getUserSettingsUseCase, GetDefaultSettingsUseCase getDefaultSettingsUseCase, AsyncUseCaseExecutor useCaseExecutor) {
-        return new SettingsCitiesPresenter(findLocationsUseCase, getDefaultSettingsUseCase, getUserSettingsUseCase, useCaseExecutor);
+    SettingsCitiesPresenter provideSettingsPresenter(FindLocationsUseCase findLocationsUseCase, GetUserSettingsUseCase getUserSettingsUseCase, UseCaseExecutor useCaseExecutor) {
+        return new SettingsCitiesPresenter(findLocationsUseCase, getUserSettingsUseCase, useCaseExecutor);
     }
 
     @Singleton
     @Provides
-    SettingsMainPresenter provideMainSettingsPresenter(SaveUserSettingsUseCase saveUserSettingsUseCase, AsyncUseCaseExecutor useCaseExecutor) {
+    SettingsMainPresenter provideMainSettingsPresenter(SaveUserSettingsUseCase saveUserSettingsUseCase, UseCaseExecutor useCaseExecutor) {
         return new SettingsMainPresenter(saveUserSettingsUseCase, useCaseExecutor);
     }
 
     @Singleton
     @Provides
-    FirstInitPresenter provideFirstInitPresenter(InitDefaultSettingsUseCase initDefaultSettingsUseCase, UseCaseExecutor useCaseExecutor, SharedPreferences preferences, DefaultSettings defaultSettings) {
-        return new FirstInitPresenter(initDefaultSettingsUseCase, useCaseExecutor, preferences, defaultSettings);
+    FirstInitPresenter provideFirstInitPresenter(SaveUserSettingsUseCase saveUserSettingsUseCase, UseCaseExecutor useCaseExecutor, SharedPreferences preferences, DefaultSettings defaultSettings) {
+        return new FirstInitPresenter(saveUserSettingsUseCase, useCaseExecutor, preferences, defaultSettings);
+    }
+
+    @Singleton
+    @Provides
+    ForecastPresenter provideForecastPresenter(GetForecastUseCase getForecastUseCase, UseCaseExecutor useCaseExecutor) {
+        return new ForecastPresenter(getForecastUseCase, useCaseExecutor);
+    }
+
+    @Provides
+    MainPresenter provideMainPresenter(GetUserSettingsUseCase getUserSettingsUseCase, UseCaseExecutor useCaseExecutor) {
+        return new MainPresenter(getUserSettingsUseCase, useCaseExecutor);
     }
 }

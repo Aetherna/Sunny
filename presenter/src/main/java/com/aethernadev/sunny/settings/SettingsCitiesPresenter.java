@@ -1,8 +1,6 @@
 package com.aethernadev.sunny.settings;
 
-import com.aethernadev.sunny.FindLocationsUseCase;
-import com.aethernadev.sunny.GetDefaultSettingsUseCase;
-import com.aethernadev.sunny.GetUserSettingsUseCase;
+import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
 import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.base.BasePresenter;
 import com.aethernadev.sunny.base.UIAction;
@@ -24,16 +22,14 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
 
     private static final int SINGLE_RESULT = 1;
     private FindLocationsUseCase findLocationsUseCase;
-    private GetDefaultSettingsUseCase getDefaultSettings;
     private GetUserSettingsUseCase getUserSettings;
     private UseCaseExecutor executor;
 
     private List<Location> selectedLocations;
 
     @Inject
-    public SettingsCitiesPresenter(FindLocationsUseCase findLocationsUseCase, GetDefaultSettingsUseCase getDefaultSettings, GetUserSettingsUseCase getUserSettings, AsyncUseCaseExecutor useCaseExecutor) {
+    public SettingsCitiesPresenter(FindLocationsUseCase findLocationsUseCase, GetUserSettingsUseCase getUserSettings, UseCaseExecutor useCaseExecutor) {
         this.findLocationsUseCase = findLocationsUseCase;
-        this.getDefaultSettings = getDefaultSettings;
         this.getUserSettings = getUserSettings;
         this.executor = useCaseExecutor;
         this.selectedLocations = new ArrayList<>();
@@ -150,24 +146,11 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
                 .subscribe(new Action1<List<Location>>() {
                     @Override
                     public void call(List<Location> locations) {
-                        if (locations.isEmpty()) {
-                            loadDefaultLocations();
-                        } else {
-                            setSelectedLocations(locations);
-                        }
-                    }
-                });
-    }
-
-    private void loadDefaultLocations() {
-        executor.wrap(getDefaultSettings, null)
-                .subscribe(new Action1<List<Location>>() {
-                    @Override
-                    public void call(List<Location> locations) {
                         setSelectedLocations(locations);
                     }
                 });
     }
+
 
     public void setSelectedLocations(final List<Location> selectedLocations) {
         this.selectedLocations = selectedLocations;

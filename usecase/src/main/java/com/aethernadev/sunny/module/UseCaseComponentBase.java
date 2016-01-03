@@ -1,11 +1,10 @@
 package com.aethernadev.sunny.module;
 
-import com.aethernadev.sunny.FindLocationsUseCase;
-import com.aethernadev.sunny.GetDefaultSettingsUseCase;
-import com.aethernadev.sunny.GetUserSettingsUseCase;
-import com.aethernadev.sunny.InitDefaultSettingsUseCase;
-import com.aethernadev.sunny.SaveUserSettingsUseCase;
 import com.aethernadev.sunny.base.UseCaseExecutor;
+import com.aethernadev.sunny.main.forecast.GetForecastUseCase;
+import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
+import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
+import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
 
 /**
  * Created by Aetherna on 2015-12-29.
@@ -18,9 +17,7 @@ public interface UseCaseComponentBase {
 
     GetUserSettingsUseCase getUserSettingsUseCase();
 
-    GetDefaultSettingsUseCase getDefaultSettingsUseCase();
-
-    InitDefaultSettingsUseCase initDefaultSettingsUseCase();
-
     UseCaseExecutor useCaseExecutor();
+
+    GetForecastUseCase getForecastUseCase();
 }

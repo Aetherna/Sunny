@@ -1,4 +1,4 @@
-package aethernadev.com.presenter2;
+package aethernadev.com.presenter;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -8,8 +8,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import aethernadev.com.weatherprovider.mapper.LocationMapper;
-import aethernadev.com.weatherprovider.mapper.SingleValuesToStringConverter;
 import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -20,7 +18,7 @@ import static com.google.common.truth.Truth.assertThat;
 public class LocationMapperTest {
 
     @Mock
-    SingleValuesToStringConverter converter;
+    SingleValueToString converter;
     LocationMapper testObject;
 
     @Before

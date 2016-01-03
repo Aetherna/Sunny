@@ -12,8 +12,7 @@ public class DayWeather {
 
     private DateTime date;
     private List<HourlyWeather> forecast;
-    private WeatherDetails weatherDetails;
-    private CurrentDetails currentDetails;
+    private WeatherMinMAx weatherMinMAx;
 
     public DateTime getDate() {
         return date;
@@ -31,11 +30,11 @@ public class DayWeather {
         this.forecast = forecast;
     }
 
-    public WeatherDetails getWeatherDetails() {
-        return weatherDetails;
+    public WeatherMinMAx getWeatherMinMAx() {
+        return weatherMinMAx;
     }
 
-    public void setWeatherDetails(WeatherDetails weatherDetails) {
-        this.weatherDetails = weatherDetails;
+    public void setWeatherMinMAx(WeatherMinMAx weatherMinMAx) {
+        this.weatherMinMAx = weatherMinMAx;
     }
 }

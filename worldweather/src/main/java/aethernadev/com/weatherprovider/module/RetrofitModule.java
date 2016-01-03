@@ -6,6 +6,8 @@ import javax.inject.Singleton;
 
 import aethernadev.com.weatherprovider.WeatherDaoImpl;
 import aethernadev.com.weatherprovider.mapper.LocationMapper;
+import aethernadev.com.weatherprovider.mapper.QueryCoordinates;
+import aethernadev.com.weatherprovider.mapper.forecast.ForecastMapper;
 import dagger.Module;
 import dagger.Provides;
 import retrofit.GsonConverterFactory;
@@ -27,13 +29,12 @@ public class RetrofitModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-
     }
 
 
     @Singleton
     @Provides
-    public WeatherDao provideWeatherSource(Retrofit retrofit, LocationMapper mapper) {
-        return new WeatherDaoImpl(retrofit, mapper);
+    public WeatherDao provideWeatherSource(Retrofit retrofit, LocationMapper mapper, ForecastMapper forecastMapper, QueryCoordinates queryCoordinates) {
+        return new WeatherDaoImpl(retrofit, mapper, forecastMapper, queryCoordinates);
     }
 }

@@ -18,5 +18,5 @@ public interface WeatherService {
     Observable<SearchLocationResponse> searchLocation(@QueryMap Map<String, String> options);
 
     @GET("/premium/v1/weather.ashx")
-    Call<WeatherForecastResponse> getWeatherForecast(@QueryMap Map<String, String> options);
+    Observable<WeatherForecastResponse> getWeatherForecast(@QueryMap Map<String, String> options);
 }

@@ -1,5 +1,7 @@
 package aethernadev.com.weatherprovider.model.weatherforecast.currentcondition;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import aethernadev.com.weatherprovider.model.SingleValue;
@@ -8,8 +10,10 @@ import aethernadev.com.weatherprovider.model.SingleValue;
  * Created by Aetherna on 2015-12-30.
  */
 public class CurrentCondition {
-    private String observation_time;
-    private String temp_C;
+    @SerializedName("observation_time")
+    private String observationTime;
+    @SerializedName("temp_C")
+    private int tempInC;
     private String weatherCode;
     public List<SingleValue> weatherIconUrl;
     public List<SingleValue> weatherDesc;
@@ -20,23 +24,15 @@ public class CurrentCondition {
     private String precipMM;
     private String humidity;
     private String visibility;
-    private String pressure;
+    private double pressure;
     private String cloudcover;
 
-    public String getObservation_time() {
-        return observation_time;
+    public String getObservationTime() {
+        return observationTime;
     }
 
-    public void setObservation_time(String observation_time) {
-        this.observation_time = observation_time;
-    }
-
-    public String getTemp_C() {
-        return temp_C;
-    }
-
-    public void setTemp_C(String temp_C) {
-        this.temp_C = temp_C;
+    public void setObservationTime(String observationTime) {
+        this.observationTime = observationTime;
     }
 
     public String getWeatherCode() {
@@ -103,19 +99,43 @@ public class CurrentCondition {
         this.visibility = visibility;
     }
 
-    public String getPressure() {
-        return pressure;
-    }
-
-    public void setPressure(String pressure) {
-        this.pressure = pressure;
-    }
-
     public String getCloudcover() {
         return cloudcover;
     }
 
     public void setCloudcover(String cloudcover) {
         this.cloudcover = cloudcover;
+    }
+
+    public int getTempInC() {
+        return tempInC;
+    }
+
+    public void setTempInC(int tempInC) {
+        this.tempInC = tempInC;
+    }
+
+    public List<SingleValue> getWeatherIconUrl() {
+        return weatherIconUrl;
+    }
+
+    public void setWeatherIconUrl(List<SingleValue> weatherIconUrl) {
+        this.weatherIconUrl = weatherIconUrl;
+    }
+
+    public List<SingleValue> getWeatherDesc() {
+        return weatherDesc;
+    }
+
+    public void setWeatherDesc(List<SingleValue> weatherDesc) {
+        this.weatherDesc = weatherDesc;
+    }
+
+    public double getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(double pressure) {
+        this.pressure = pressure;
     }
 }

@@ -32,8 +32,6 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
 
     public static final String SELECTED_LOCATIONS = "SelectedLocations";
     public static final String SELECTION_DIALOG = "dialog";
-    @Bind(R.id.restore_settings_to_default)
-    Button restoreToDefaults;
     @Bind(R.id.city_input)
     EditText cityInput;
     @Bind(R.id.search_city)
@@ -162,5 +160,17 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
 
     public List<Location> getUserSelectedLocations() {
         return presenter.getSelectedLocations();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.attachUI(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        presenter.detachUI();
     }
 }

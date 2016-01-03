@@ -4,12 +4,18 @@ import android.text.TextUtils;
 
 import com.aethernadev.sunny.data.Location;
 
+import javax.inject.Inject;
+
 /**
  * Created by Aetherna on 2015-12-30.
  */
 public class QueryCoordinates {
 
     private static final CharSequence DELIMITER = ",";
+
+    @Inject
+    public QueryCoordinates() {
+    }
 
     public String from(Location location) {
 

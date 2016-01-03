@@ -10,12 +10,12 @@ import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 /**
  * Created by Aetherna on 2015-12-27.
  */
-public class SingleValuesToStringConverter {
+public class SingleValueToString {
 
     private static final String EMPTY_STRING = "";
 
     @Inject
-    public SingleValuesToStringConverter() {
+    public SingleValueToString() {
     }
 
     public String convertToString(List<SingleValue> singleValues) {
