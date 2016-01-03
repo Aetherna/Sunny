@@ -1,4 +1,4 @@
-package com.aethernadev.sunny.usecaseexecutor;
+package com.aethernadev.sunny.testutils;
 
 import com.aethernadev.sunny.base.UseCase;
 import com.aethernadev.sunny.base.UseCaseExecutor;
@@ -6,24 +6,22 @@ import com.aethernadev.sunny.base.UseCaseExecutor;
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Aetherna.
+ * Created by Marta on 03/01/2016.
  */
-
-public class AsyncUseCaseExecutor implements UseCaseExecutor {
+public class TestSyncUseCaseExecutor implements UseCaseExecutor {
 
     @Inject
-    public AsyncUseCaseExecutor() {
+    public TestSyncUseCaseExecutor() {
     }
 
     @Override
     public <Result, Argument> Observable<Result> wrap(UseCase<Result, Argument> useCase, Argument argument) {
 
         return useCase.execute(argument)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .subscribeOn(Schedulers.immediate())
+                .observeOn(Schedulers.immediate());
     }
 }

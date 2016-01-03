@@ -1,9 +1,10 @@
-package com.aethernadev.sunny.settings;
+package com.aethernadev.sunny.presenter.settings;
 
 import com.aethernadev.sunny.data.Location;
-import com.aethernadev.sunny.base.BasePresenter;
-import com.aethernadev.sunny.base.UIAction;
+import com.aethernadev.sunny.presenter.base.BasePresenter;
+import com.aethernadev.sunny.presenter.base.UIAction;
 import com.aethernadev.sunny.base.UseCaseExecutor;
+import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
 
 import java.util.List;
 

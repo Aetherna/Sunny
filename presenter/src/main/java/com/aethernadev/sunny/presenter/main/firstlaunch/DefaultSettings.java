@@ -1,4 +1,4 @@
-package com.aethernadev.sunny.main.firstlaunch;
+package com.aethernadev.sunny.presenter.main.firstlaunch;
 
 import com.aethernadev.sunny.data.Location;
 

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/default_margin"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginBottom="@dimen/default_margin"
+              android:orientation="vertical">
+
+    <TextView
+        style="@style/LocationName"
+        android:id="@+id/location_name"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/location_region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/today"
-        android:textSize="@dimen/textSizeDay" />
+        android:textSize="@dimen/textSizeDay"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/weather_description"
@@ -29,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/pressure" />
+            android:layout_below="@id/pressure"/>
 
 
         <TextView
@@ -38,8 +49,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:gravity="right"
-            android:layout_marginBottom="@dimen/default_margin"/>
+            android:layout_marginBottom="@dimen/default_margin"
+            android:gravity="right"/>
     </RelativeLayout>
 
 </LinearLayout>

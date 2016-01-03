@@ -1,7 +1,7 @@
-package com.aethernadev.sunny.main;
+package com.aethernadev.sunny.presenter.main;
 
-import com.aethernadev.sunny.base.BasePresenter;
-import com.aethernadev.sunny.base.UIAction;
+import com.aethernadev.sunny.presenter.base.BasePresenter;
+import com.aethernadev.sunny.presenter.base.UIAction;
 import com.aethernadev.sunny.base.UseCaseExecutor;
 import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
@@ -30,7 +30,20 @@ public class MainPresenter extends BasePresenter<MainPresenter.UI> {
         executor.wrap(getUserSettings, null).subscribe(new Action1<List<Location>>() {
             @Override
             public void call(List<Location> locations) {
-                showLocationsForecasts(locations);
+                if(locations.isEmpty()){
+                    showEmptyWarning();
+                }else {
+                    showLocationsForecasts(locations);
+                }
+            }
+        });
+    }
+
+    private void showEmptyWarning() {
+        execute(new UIAction<UI>() {
+            @Override
+            public void execute(UI ui) {
+                ui.showEmptyLocationsWarning();
             }
         });
     }
@@ -46,5 +59,7 @@ public class MainPresenter extends BasePresenter<MainPresenter.UI> {
 
     public interface UI {
         void showLocationsForecast(List<Location> locations);
+
+        void showEmptyLocationsWarning();
     }
 }

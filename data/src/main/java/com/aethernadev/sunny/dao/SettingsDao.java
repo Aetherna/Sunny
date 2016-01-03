@@ -13,4 +13,5 @@ public interface SettingsDao {
 
     List<Location> getUserLocations();
 
+    void deleteOldUserLocations();
 }

@@ -1,10 +1,16 @@
-package com.aethernadev.sunny.main.forecast;
+package com.aethernadev.sunny.presenter.main.forecast;
 
-import com.aethernadev.sunny.base.BasePresenter;
-import com.aethernadev.sunny.base.UIAction;
+import com.aethernadev.sunny.presenter.base.BasePresenter;
+import com.aethernadev.sunny.presenter.base.UIAction;
 import com.aethernadev.sunny.base.UseCaseExecutor;
 import com.aethernadev.sunny.data.Forecast;
 import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.presenter.error.PrintableError;
+import com.aethernadev.sunny.presenter.error.SunnyError;
+import com.aethernadev.sunny.presenter.error.UnknownError;
+import com.aethernadev.sunny.main.forecast.GetForecastUseCase;
+
+import java.net.UnknownHostException;
 
 import javax.inject.Inject;
 
@@ -35,7 +41,11 @@ public class ForecastPresenter extends BasePresenter<ForecastPresenter.UI> {
 
             @Override
             public void onError(Throwable e) {
-                showError(e.getMessage()); //todo
+                if (e instanceof UnknownHostException) {
+                    showError(SunnyError.CONNECTION_ERROR);
+                } else {
+                    showError(new UnknownError(e));
+                }
             }
 
             @Override
@@ -47,10 +57,11 @@ public class ForecastPresenter extends BasePresenter<ForecastPresenter.UI> {
 
     }
 
-    private void showError(final String message) {
+    private void showError(final PrintableError message) {
         execute(new UIAction<UI>() {
             @Override
             public void execute(UI ui) {
+                ui.hideLoading();
                 ui.showError(message);
             }
         });
@@ -79,6 +90,8 @@ public class ForecastPresenter extends BasePresenter<ForecastPresenter.UI> {
 
         void showForecast(Forecast forecast);
 
-        void showError(String error);
+        void showError(PrintableError error);
+
+        void hideLoading();
     }
 }

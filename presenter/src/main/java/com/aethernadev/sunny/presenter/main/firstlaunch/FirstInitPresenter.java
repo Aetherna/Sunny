@@ -1,9 +1,9 @@
-package com.aethernadev.sunny.main.firstlaunch;
+package com.aethernadev.sunny.presenter.main.firstlaunch;
 
 import android.content.SharedPreferences;
 
-import com.aethernadev.sunny.base.BasePresenter;
-import com.aethernadev.sunny.base.UIAction;
+import com.aethernadev.sunny.presenter.base.BasePresenter;
+import com.aethernadev.sunny.presenter.base.UIAction;
 import com.aethernadev.sunny.base.UseCaseExecutor;
 import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;

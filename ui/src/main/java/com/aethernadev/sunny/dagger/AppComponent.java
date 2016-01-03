@@ -4,14 +4,14 @@ import android.content.SharedPreferences;
 
 import com.aethernadev.sunny.MainActivity;
 import com.aethernadev.sunny.main.ForecastFragment;
-import com.aethernadev.sunny.main.MainPresenter;
+import com.aethernadev.sunny.presenter.main.MainPresenter;
 import com.aethernadev.sunny.main.WeatherFormat;
-import com.aethernadev.sunny.main.firstlaunch.FirstInitPresenter;
-import com.aethernadev.sunny.main.forecast.ForecastPresenter;
+import com.aethernadev.sunny.presenter.main.firstlaunch.FirstInitPresenter;
+import com.aethernadev.sunny.presenter.main.forecast.ForecastPresenter;
 import com.aethernadev.sunny.module.UseCaseComponentBase;
 import com.aethernadev.sunny.settings.SettingsActivity;
-import com.aethernadev.sunny.settings.SettingsCitiesPresenter;
-import com.aethernadev.sunny.settings.SettingsMainPresenter;
+import com.aethernadev.sunny.presenter.settings.SettingsCitiesPresenter;
+import com.aethernadev.sunny.presenter.settings.SettingsMainPresenter;
 import com.aethernadev.sunny.settings.cities.SettingsCitiesFragment;
 
 import javax.inject.Singleton;

@@ -11,9 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.aethernadev.sunny.data.Location;
-import com.aethernadev.sunny.main.MainPresenter;
+import com.aethernadev.sunny.presenter.main.MainPresenter;
 import com.aethernadev.sunny.main.WeatherPagerAdapter;
-import com.aethernadev.sunny.main.firstlaunch.FirstInitPresenter;
+import com.aethernadev.sunny.presenter.main.firstlaunch.FirstInitPresenter;
 import com.aethernadev.sunny.settings.SettingsActivity;
 
 import java.util.List;
@@ -82,15 +82,16 @@ public class MainActivity extends AppCompatActivity implements FirstInitPresente
     @Override
     public void showLocationsForecast(List<Location> locations) {
 
-        if (locations.isEmpty()) {
-            Snackbar.make(tabLayout, R.string.no_cites_chosen, Snackbar.LENGTH_INDEFINITE).show();
-        }
-
         weatherPagesAdapter = new WeatherPagerAdapter(getSupportFragmentManager(), locations);
         viewPager.setAdapter(weatherPagesAdapter);
 
         tabLayout.setTabsFromPagerAdapter(weatherPagesAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void showEmptyLocationsWarning() {
+        Snackbar.make(tabLayout, R.string.no_cites_chosen, Snackbar.LENGTH_INDEFINITE).show();
     }
 
     @Override

@@ -19,19 +19,23 @@
 
     <style name="ErrorMessage">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/text_size_error_message</item>
+        <item name="android:textSize">@dimen/textSizeErrorMessage</item>
         <item name="android:textColor">@color/colorDelete</item>
     </style>
 
     <style name="LocationLabel">
-        <item name="android:textSize">@dimen/text_size_location_label</item>
+        <item name="android:textSize">@dimen/textSizeLocationLabel</item>
         <item name="android:textColor">@color/colorLabel</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="LocationName" parent="LocationLabel">
+        <item name="android:textSize">@dimen/textSizeDay</item>
+    </style>
+
     <style name="LocationDetails">
-        <item name="android:textSize">@dimen/text_size_location_detail</item>
+        <item name="android:textSize">@dimen/textSizeLocationDetail</item>
         <item name="android:textColor">@color/colorDetail</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.R;
+import com.aethernadev.sunny.data.Location;
 
 /**
  * Created by Aetherna.

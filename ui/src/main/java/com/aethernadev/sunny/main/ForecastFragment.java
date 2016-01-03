@@ -18,7 +18,8 @@ import com.aethernadev.sunny.data.DayWeather;
 import com.aethernadev.sunny.data.Forecast;
 import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.main.dailyforecast.DailyForecastAdapter;
-import com.aethernadev.sunny.main.forecast.ForecastPresenter;
+import com.aethernadev.sunny.presenter.error.PrintableError;
+import com.aethernadev.sunny.presenter.main.forecast.ForecastPresenter;
 
 import java.util.List;
 
@@ -33,26 +34,31 @@ import butterknife.ButterKnife;
 public class ForecastFragment extends Fragment implements ForecastPresenter.UI {
 
     private static final int TODAY = 0;
+    private static final String LOCATION = "location";
+
     @Inject
     protected ForecastPresenter presenter;
     @Inject
-    WeatherFormat weatherFormat;
+    protected WeatherFormat weatherFormat;
+
+    @Bind(R.id.location_name)
+    protected TextView locationName;
+    @Bind(R.id.location_region)
+    protected TextView locationRegion;
 
     @Bind(R.id.loading_forecast)
     protected ProgressBar progressBar;
     @Bind(R.id.current_temp)
-    TextView currentTemperature;
+    protected TextView currentTemperature;
     @Bind(R.id.pressure)
-    TextView pressure;
+    protected TextView pressure;
     @Bind(R.id.weather_description)
-    TextView weatherDescription;
+    protected TextView weatherDescription;
     @Bind(R.id.dailyForecast)
-    ListView listView;
+    protected ListView listView;
 
 
     private Location location;
-
-    public static final String LOCATION = "location";
     private View rootView;
 
     public static ForecastFragment newInstance(Location location) {
@@ -100,6 +106,13 @@ public class ForecastFragment extends Fragment implements ForecastPresenter.UI {
 
     private void initTodayView(CurrentConditions currentConditions) {
 
+        locationName.setText(location.getName());
+        if (!location.getRegion().isEmpty()) {
+            locationRegion.setText(location.getRegion());
+        } else {
+            locationRegion.setText(location.getCountry());
+        }
+
         int tempNow = currentConditions.getTemperatureNowCelsius();
         currentTemperature.setText(weatherFormat.formatToCelsius(tempNow));
         if (tempNow < 0) {
@@ -118,9 +131,13 @@ public class ForecastFragment extends Fragment implements ForecastPresenter.UI {
     }
 
     @Override
-    public void showError(String error) {
-        Snackbar.make(rootView, error, Snackbar.LENGTH_SHORT).show();
+    public void showError(PrintableError error) {
+        Snackbar.make(rootView, error.getMessage(getContext()), Snackbar.LENGTH_INDEFINITE).show();
     }
 
+    @Override
+    public void hideLoading() {
+        progressBar.setVisibility(View.GONE);
+    }
 
 }

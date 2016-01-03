@@ -18,6 +18,7 @@
     <string name="no_cites_chosen">No cities selected.</string>
     <string name="refresh">Refresh</string>
     <string name="pascal">hPa</string>
+    <string name="next_days">Next days:</string>
     <array name="week_days">
         <item>Monday</item>
         <item>Tuesday</item>

@@ -1,6 +1,8 @@
 package com.aethernadev.sunny.settings;
 
 import com.aethernadev.sunny.base.UseCase;
+import com.aethernadev.sunny.dao.SettingsDao;
+import com.aethernadev.sunny.data.Location;
 
 import java.util.List;
 
@@ -13,15 +15,15 @@ import rx.Observable;
  */
 public class SaveUserSettingsUseCase implements UseCase<Boolean, List<com.aethernadev.sunny.data.Location>> {
 
-    com.aethernadev.sunny.dao.SettingsDao settingsDao;
+    SettingsDao settingsDao;
 
     @Inject
-    public SaveUserSettingsUseCase(com.aethernadev.sunny.dao.SettingsDao settingsDao) {
+    public SaveUserSettingsUseCase(SettingsDao settingsDao) {
         this.settingsDao = settingsDao;
     }
 
     @Override
-    public Observable<Boolean> execute(List<com.aethernadev.sunny.data.Location> locations) {
+    public Observable<Boolean> execute(List<Location> locations) {
         return Observable.just(settingsDao.saveUserLocations(locations));
     }
 }

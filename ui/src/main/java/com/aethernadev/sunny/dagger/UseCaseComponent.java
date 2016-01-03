@@ -5,7 +5,7 @@ import com.aethernadev.sunny.module.UseCaseComponentBase;
 import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
 import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
 import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
-import com.aethernadev.sunny.usecaseexecutor.AsyncUseCaseExecutor;
+import com.aethernadev.sunny.presenter.usecaseexecutor.AsyncUseCaseExecutor;
 
 import javax.inject.Singleton;
 

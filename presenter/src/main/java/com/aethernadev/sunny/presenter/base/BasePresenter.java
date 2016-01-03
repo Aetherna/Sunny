@@ -1,4 +1,4 @@
-package com.aethernadev.sunny.base;
+package com.aethernadev.sunny.presenter.base;
 
 import java.util.LinkedList;
 import java.util.Queue;

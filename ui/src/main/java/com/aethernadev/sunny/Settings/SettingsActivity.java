@@ -8,12 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.aethernadev.sunny.R;
 import com.aethernadev.sunny.SunnyApp;
+import com.aethernadev.sunny.presenter.settings.SettingsMainPresenter;
 import com.aethernadev.sunny.settings.cities.SettingsCitiesFragment;
 
 import javax.inject.Inject;

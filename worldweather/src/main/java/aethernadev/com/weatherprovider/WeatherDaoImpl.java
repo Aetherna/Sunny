@@ -2,9 +2,9 @@ package aethernadev.com.weatherprovider;
 
 import android.support.annotation.NonNull;
 
+import com.aethernadev.sunny.dao.WeatherDao;
 import com.aethernadev.sunny.data.Forecast;
 import com.aethernadev.sunny.data.Location;
-import com.aethernadev.sunny.dao.WeatherDao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,9 +39,9 @@ public class WeatherDaoImpl implements WeatherDao {
     private final static String NUM_OF_DAYS_KEY = "num_of_days";
     private final static String NUM_OF_DAYS = "5";
 
-    private WeatherService weatherService;
     private final LocationMapper locationMapper;
     private final ForecastMapper forecastMapper;
+    private WeatherService weatherService;
     private QueryCoordinates queryCoordinates;
 
     @Inject
@@ -54,8 +54,8 @@ public class WeatherDaoImpl implements WeatherDao {
 
     @Override
     public Observable<List<Location>> findAvailableLocations(final String locationName) {
-        Map<String, String> queryArguments = new HashMap<>(); //todo
-        queryArguments.put(API_KEY, "239fd36834e8ad762c8dca32c7f42");
+        Map<String, String> queryArguments = new HashMap<>();
+        queryArguments.put(API_KEY, BuildConfig.WEATHER_API_KEY);
         queryArguments.put(RESPONSE_FORMAT_KEY, JSON_RESPONSE_FORMAT);
         queryArguments.put(NUM_OF_RESULTS_KEY, MAX_NUM_OF_RESULTS);
         queryArguments.put(QUERY, locationName);
@@ -87,7 +87,7 @@ public class WeatherDaoImpl implements WeatherDao {
     @Override
     public Observable<Forecast> getForecast(Location location) {
         Map<String, String> queryArguments = new HashMap<>();
-        queryArguments.put(API_KEY, "239fd36834e8ad762c8dca32c7f42"); //todo
+        queryArguments.put(API_KEY, BuildConfig.WEATHER_API_KEY);
         queryArguments.put(RESPONSE_FORMAT_KEY, JSON_RESPONSE_FORMAT);
         queryArguments.put(NUM_OF_DAYS_KEY, NUM_OF_DAYS);
         queryArguments.put(QUERY, queryCoordinates.from(location));

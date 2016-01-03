@@ -1,18 +1,18 @@
-package com.aethernadev.sunny.module;
+package com.aethernadev.sunny.presenter.module;
 
 import android.content.SharedPreferences;
 
 import com.aethernadev.sunny.base.UseCaseExecutor;
-import com.aethernadev.sunny.main.MainPresenter;
-import com.aethernadev.sunny.main.firstlaunch.DefaultSettings;
-import com.aethernadev.sunny.main.firstlaunch.FirstInitPresenter;
-import com.aethernadev.sunny.main.forecast.ForecastPresenter;
+import com.aethernadev.sunny.presenter.main.MainPresenter;
+import com.aethernadev.sunny.presenter.main.firstlaunch.DefaultSettings;
+import com.aethernadev.sunny.presenter.main.firstlaunch.FirstInitPresenter;
+import com.aethernadev.sunny.presenter.main.forecast.ForecastPresenter;
 import com.aethernadev.sunny.main.forecast.GetForecastUseCase;
 import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
 import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
 import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
-import com.aethernadev.sunny.settings.SettingsCitiesPresenter;
-import com.aethernadev.sunny.settings.SettingsMainPresenter;
+import com.aethernadev.sunny.presenter.settings.SettingsCitiesPresenter;
+import com.aethernadev.sunny.presenter.settings.SettingsMainPresenter;
 
 import javax.inject.Singleton;
 

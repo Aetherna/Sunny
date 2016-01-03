@@ -52,7 +52,7 @@ public class WeatherServiceTest extends AndroidTestCase {
         location.setLatitude(53.333);
 
         Map<String, String> queryArguments = new HashMap<>();
-        queryArguments.put("key", "239fd36834e8ad762c8dca32c7f42"); //todo
+        queryArguments.put("key", BuildConfig.WEATHER_API_KEY);
         queryArguments.put("format", "JSON");
         queryArguments.put("num_of_days", "5");
         queryArguments.put("q", queryCoordinates.from(location));
@@ -83,7 +83,7 @@ public class WeatherServiceTest extends AndroidTestCase {
         location.setLatitude(53.333);
 
         Map<String, String> queryArguments = new HashMap<>();
-        queryArguments.put("key", "239fd36834e8ad762c8dca32c7f42"); //todo
+        queryArguments.put("key", BuildConfig.WEATHER_API_KEY);
         queryArguments.put("format", "JSON");
         queryArguments.put("num_of_days", "5");
         queryArguments.put("q", queryCoordinates.from(location));

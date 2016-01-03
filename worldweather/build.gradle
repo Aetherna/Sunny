@@ -10,6 +10,7 @@ android {
         targetSdkVersion CONFIG_TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "WEATHER_API_KEY", "\"239fd36834e8ad762c8dca32c7f42\""
     }
     buildTypes {
         release {

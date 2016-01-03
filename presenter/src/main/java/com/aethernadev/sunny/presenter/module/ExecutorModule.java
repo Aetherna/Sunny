@@ -1,7 +1,6 @@
-package com.aethernadev.sunny.module;
+package com.aethernadev.sunny.presenter.module;
 
-import com.aethernadev.sunny.base.UseCaseExecutor;
-import com.aethernadev.sunny.usecaseexecutor.AsyncUseCaseExecutor;
+import com.aethernadev.sunny.presenter.usecaseexecutor.AsyncUseCaseExecutor;
 
 import dagger.Module;
 import dagger.Provides;

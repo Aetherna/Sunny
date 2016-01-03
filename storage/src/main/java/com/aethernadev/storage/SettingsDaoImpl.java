@@ -32,7 +32,7 @@ public class SettingsDaoImpl implements SettingsDao {
     @Override
     public boolean saveUserLocations(List<Location> locations) {
 
-        deleteOldUserLocations();
+//        deleteOldUserLocations();
 
         for (Location location : locations) {
             saveLocation(location);
@@ -40,7 +40,7 @@ public class SettingsDaoImpl implements SettingsDao {
         return true;
     }
 
-    private void deleteOldUserLocations() {
+    public void deleteOldUserLocations() {
         RealmResults<RealmLocation> toDelete = realm.where(RealmLocation.class).findAll();
         realm.beginTransaction();
         toDelete.clear();

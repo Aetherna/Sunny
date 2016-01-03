@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.aethernadev.sunny.data.Location;
 import com.aethernadev.sunny.R;
 import com.aethernadev.sunny.SunnyApp;
-import com.aethernadev.sunny.settings.SettingsCitiesPresenter;
+import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.presenter.error.PrintableError;
+import com.aethernadev.sunny.presenter.settings.SettingsCitiesPresenter;
 
 import java.io.Serializable;
 import java.util.List;
@@ -104,8 +104,8 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
     }
 
     @Override
-    public void showError(String error) {
-        errorMessage.setText(error);
+    public void showError(PrintableError error) {
+        errorMessage.setText(error.getMessage(getContext()));
     }
 
     @Override
@@ -141,7 +141,7 @@ public class SettingsCitiesFragment extends Fragment implements CitiesListAdapte
     private boolean validateInputField() {
         hideError();
         if (cityInput.getText().toString().trim().isEmpty()) {
-            showError(getActivity().getString(R.string.insert_value));
+            errorMessage.setText(getActivity().getString(R.string.insert_value));
             return false;
         }
         return true;

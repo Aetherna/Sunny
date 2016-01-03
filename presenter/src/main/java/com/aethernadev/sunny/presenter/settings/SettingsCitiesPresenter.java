@@ -1,12 +1,18 @@
-package com.aethernadev.sunny.settings;
+package com.aethernadev.sunny.presenter.settings;
 
-import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
-import com.aethernadev.sunny.data.Location;
-import com.aethernadev.sunny.base.BasePresenter;
-import com.aethernadev.sunny.base.UIAction;
+import android.util.Log;
+
 import com.aethernadev.sunny.base.UseCaseExecutor;
-import com.aethernadev.sunny.usecaseexecutor.AsyncUseCaseExecutor;
+import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.presenter.base.BasePresenter;
+import com.aethernadev.sunny.presenter.base.UIAction;
+import com.aethernadev.sunny.presenter.error.PrintableError;
+import com.aethernadev.sunny.presenter.error.SunnyError;
+import com.aethernadev.sunny.presenter.error.UnknownError;
+import com.aethernadev.sunny.searchlocation.FindLocationsUseCase;
+import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,25 +55,26 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
                     @Override
                     public void onError(Throwable e) {
                         hideLoading();
-                        showError(e.getMessage());
+                        if (e instanceof UnknownHostException) {
+                            showError(SunnyError.CONNECTION_ERROR);
+                        } else {
+                            Log.e(SettingsCitiesPresenter.class.getSimpleName(),"Error finding locations:" + e.getMessage());
+                            showError(new UnknownError(e));
+                        }
                     }
 
                     @Override
                     public void onNext(List<Location> locations) {
+                        hideLoading();
                         if (locations.isEmpty()) {
-                            hideLoading();
-                            showError("No location found!");
-                            return;
-                        }
-
-                        if (locations.size() == SINGLE_RESULT) {
+                            showError(SunnyError.NO_RESULTS);
+                        } else if (SINGLE_RESULT == locations.size()) {
                             addFirstLocation(locations);
                         } else {
                             selectLocation(locations);
                         }
                     }
                 });
-
     }
 
     private void addFirstLocation(List<Location> locations) {
@@ -96,11 +103,11 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
         });
     }
 
-    private void showError(final String errorMessage) {
+    private void showError(final PrintableError error) {
         execute(new UIAction<SettingsUI>() {
             @Override
             public void execute(SettingsUI settingsUI) {
-                ui.showError(errorMessage);
+                ui.showError(error);
             }
         });
     }
@@ -140,6 +147,16 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
         return selectedLocations;
     }
 
+    public void setSelectedLocations(final List<Location> selectedLocations) {
+        this.selectedLocations = selectedLocations;
+        execute(new UIAction<SettingsUI>() {
+            @Override
+            public void execute(SettingsUI settingsUI) {
+                ui.setLocations(selectedLocations);
+            }
+        });
+    }
+
     public void loadSavedLocations() {
 
         executor.wrap(getUserSettings, null)
@@ -149,17 +166,6 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
                         setSelectedLocations(locations);
                     }
                 });
-    }
-
-
-    public void setSelectedLocations(final List<Location> selectedLocations) {
-        this.selectedLocations = selectedLocations;
-        execute(new UIAction<SettingsUI>() {
-            @Override
-            public void execute(SettingsUI settingsUI) {
-                ui.setLocations(selectedLocations);
-            }
-        });
     }
 
     public void addSelectedLocation(Location location) {
@@ -172,7 +178,7 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
 
         void setLocations(List<Location> locations);
 
-        void showError(String error); //todo try use resource id from presenter layer:>
+        void showError(PrintableError error);
 
         void showLoading();
 
