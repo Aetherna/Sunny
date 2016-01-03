@@ -5,7 +5,7 @@ import java.util.List;
 import aethernadev.com.weatherprovider.model.SingleValue;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class Hourly {
     private String chanceoffog;

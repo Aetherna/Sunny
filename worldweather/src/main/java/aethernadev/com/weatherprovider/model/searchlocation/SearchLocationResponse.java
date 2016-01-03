@@ -3,7 +3,7 @@ package aethernadev.com.weatherprovider.model.searchlocation;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Aetherna on 2015-12-27.
+ * Created by Aetherna.
  */
 public class SearchLocationResponse {
 

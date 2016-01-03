@@ -4,7 +4,7 @@ package com.aethernadev.sunny.base;
 import rx.Observable;
 
 /**
- * Created by Aetherna on 22/12/2015.
+ * Created by Aetherna.
  */
 public interface UseCaseExecutor {
 

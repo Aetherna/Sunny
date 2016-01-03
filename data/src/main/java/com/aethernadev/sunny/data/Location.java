@@ -3,7 +3,7 @@ package com.aethernadev.sunny.data;
 import java.io.Serializable;
 
 /**
- * Created by Aetherna on 2015-12-27.
+ * Created by Aetherna.
  */
 public class Location implements Serializable {
 

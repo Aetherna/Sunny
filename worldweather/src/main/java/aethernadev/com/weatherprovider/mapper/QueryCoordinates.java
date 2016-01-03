@@ -7,7 +7,7 @@ import com.aethernadev.sunny.data.Location;
 import javax.inject.Inject;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class QueryCoordinates {
 

@@ -8,7 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public class DefaultSettings {
 

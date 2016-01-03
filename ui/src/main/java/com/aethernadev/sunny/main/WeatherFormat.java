@@ -7,7 +7,7 @@ import com.aethernadev.sunny.R;
 import javax.inject.Inject;
 
 /**
- * Created by Aetherna on 2015-12-31.
+ * Created by Aetherna.
  */
 public class WeatherFormat {
 

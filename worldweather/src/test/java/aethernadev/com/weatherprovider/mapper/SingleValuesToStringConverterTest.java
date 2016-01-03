@@ -12,7 +12,7 @@ import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 import static com.google.common.truth.Truth.*;
 
 /**
- * Created by Aetherna on 2015-12-27.
+ * Created by Aetherna.
  */
 public class SingleValuesToStringConverterTest {
 

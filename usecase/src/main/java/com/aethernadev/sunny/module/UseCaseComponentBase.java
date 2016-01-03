@@ -7,7 +7,7 @@ import com.aethernadev.sunny.settings.GetUserSettingsUseCase;
 import com.aethernadev.sunny.settings.SaveUserSettingsUseCase;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public interface UseCaseComponentBase {
 

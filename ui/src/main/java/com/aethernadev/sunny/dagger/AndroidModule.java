@@ -11,7 +11,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 @Module
 public class AndroidModule {

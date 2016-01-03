@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import rx.Observer;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class ForecastPresenter extends BasePresenter<ForecastPresenter.UI> {
 

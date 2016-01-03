@@ -16,7 +16,7 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public class SettingsDaoImpl implements SettingsDao {
 

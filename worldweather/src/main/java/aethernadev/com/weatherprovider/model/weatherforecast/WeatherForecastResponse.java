@@ -3,7 +3,7 @@ package aethernadev.com.weatherprovider.model.weatherforecast;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class WeatherForecastResponse {
 

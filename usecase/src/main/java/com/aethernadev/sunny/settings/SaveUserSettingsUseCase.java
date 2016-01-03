@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import rx.Observable;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public class SaveUserSettingsUseCase implements UseCase<Boolean, List<com.aethernadev.sunny.data.Location>> {
 

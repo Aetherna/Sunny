@@ -9,7 +9,7 @@ import aethernadev.com.weatherprovider.model.weatherforecast.WeatherForecast;
 import aethernadev.com.weatherprovider.model.weatherforecast.currentcondition.CurrentCondition;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class CurrentConditionsMapper {
 

@@ -3,7 +3,7 @@ package com.aethernadev.sunny.data;
 import org.joda.time.DateTime;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class HourlyWeather {
     private DateTime time;

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import rx.Observable;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class GetForecastUseCase implements UseCase<Forecast, Location> {
 

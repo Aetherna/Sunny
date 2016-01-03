@@ -1,7 +1,7 @@
 package aethernadev.com.weatherprovider.model.weatherforecast.weather;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class Astronomy {
     public String moonrise;

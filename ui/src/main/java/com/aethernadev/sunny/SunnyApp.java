@@ -12,7 +12,7 @@ import com.aethernadev.sunny.dagger.AndroidModule;
 import com.aethernadev.sunny.dagger.UseCaseComponent;
 
 /**
- * Created by Aetherna on 2015-12-28.
+ * Created by Aetherna.
  */
 public class SunnyApp extends Application {
 

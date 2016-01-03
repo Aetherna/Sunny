@@ -15,7 +15,7 @@ import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 
 /**
- * Created by Aetherna on 2015-12-26.
+ * Created by Aetherna.
  */
 
 @Module

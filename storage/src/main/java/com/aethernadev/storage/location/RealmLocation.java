@@ -3,7 +3,7 @@ package com.aethernadev.storage.location;
 import io.realm.RealmObject;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public class RealmLocation extends RealmObject {
 

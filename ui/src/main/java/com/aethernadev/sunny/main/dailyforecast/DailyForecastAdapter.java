@@ -16,7 +16,7 @@ import com.aethernadev.sunny.data.Location;
 import java.util.List;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class DailyForecastAdapter extends ArrayAdapter<DayWeather> {
 

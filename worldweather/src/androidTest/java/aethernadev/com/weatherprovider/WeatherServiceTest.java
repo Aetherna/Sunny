@@ -25,7 +25,7 @@ import rx.Observable;
 import rx.Observer;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class WeatherServiceTest extends AndroidTestCase {
 

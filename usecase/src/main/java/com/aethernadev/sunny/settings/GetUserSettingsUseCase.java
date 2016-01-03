@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import rx.Observable;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public class GetUserSettingsUseCase implements UseCase<List<Location>, Void> {
 

@@ -26,7 +26,7 @@ import rx.Observable;
 import rx.functions.Func1;
 
 /**
- * Created by Aetherna on 2015-12-26.
+ * Created by Aetherna.
  */
 public class WeatherDaoImpl implements WeatherDao {
 

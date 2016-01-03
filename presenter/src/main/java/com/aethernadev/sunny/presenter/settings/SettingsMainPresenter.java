@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import rx.functions.Action1;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 public class SettingsMainPresenter extends BasePresenter<SettingsMainPresenter.UI> {
 

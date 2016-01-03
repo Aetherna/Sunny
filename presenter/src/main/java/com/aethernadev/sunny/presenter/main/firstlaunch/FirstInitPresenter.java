@@ -15,7 +15,7 @@ import javax.inject.Inject;
 import rx.functions.Action1;
 
 /**
- * Created by Aetherna on 2015-12-30.
+ * Created by Aetherna.
  */
 public class FirstInitPresenter extends BasePresenter<FirstInitPresenter.UI> {
 

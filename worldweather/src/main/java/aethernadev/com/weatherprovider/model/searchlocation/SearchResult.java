@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by Aetherna on 2015-12-27.
+ * Created by Aetherna.
  */
 public class SearchResult {
 

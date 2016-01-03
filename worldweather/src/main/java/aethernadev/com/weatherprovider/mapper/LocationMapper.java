@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import aethernadev.com.weatherprovider.model.searchlocation.ResponseLocation;
 
 /**
- * Created by Aetherna on 2015-12-27.
+ * Created by Aetherna.
  */
 public class LocationMapper {
 

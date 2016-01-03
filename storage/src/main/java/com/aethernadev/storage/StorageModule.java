@@ -12,7 +12,7 @@ import dagger.Provides;
 import io.realm.Realm;
 
 /**
- * Created by Aetherna on 2015-12-29.
+ * Created by Aetherna.
  */
 
 @Singleton

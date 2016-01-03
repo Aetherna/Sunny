@@ -8,7 +8,7 @@ import java.util.List;
 import rx.Observable;
 
 /**
- * Created by Aetherna on 2015-12-27.
+ * Created by Aetherna.
  */
 public interface WeatherDao {
 
