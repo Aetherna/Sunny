@@ -1,7 +1,8 @@
 machine:
   pre:
     #add gradlew permissions
-    - chmod +x gradlew
+    #- chmod +x gradlew
+    - ls
 test:
   override:
     # start the emulator
