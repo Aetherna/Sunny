@@ -1,7 +1,9 @@
-test:
-  override:
+machine:
+  pre:
     #add gradlew permissions
     - ./chmod +x gradlew
+test:
+  override:
     # start the emulator
     - emulator -avd circleci-android22 -no-audio -no-window:
         background: true
