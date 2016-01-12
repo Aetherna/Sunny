@@ -19,4 +19,4 @@ test:
     #
     #run just junits
     - ./gradlew test --continue
-    # - cp -r Sunny/ui/build/outputs $CIRCLE_ARTIFACTS
+    # - cp -r Sunny/build/outputs $CIRCLE_ARTIFACTS
