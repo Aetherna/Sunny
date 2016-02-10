@@ -32,7 +32,7 @@ public class SettingsDaoImpl implements SettingsDao {
     @Override
     public boolean saveUserLocations(List<Location> locations) {
 
-//        deleteOldUserLocations();
+        deleteOldUserLocations();
 
         for (Location location : locations) {
             saveLocation(location);
