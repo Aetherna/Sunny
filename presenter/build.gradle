@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'jacoco'
 android {
     compileSdkVersion CONFIG_COMPILE_SDK_VERSION
     buildToolsVersion CONFIG_BUILD_TOOLS_VERSION

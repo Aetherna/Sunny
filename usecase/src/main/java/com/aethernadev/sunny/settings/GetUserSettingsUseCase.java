@@ -15,7 +15,7 @@ import rx.Observable;
  */
 public class GetUserSettingsUseCase implements UseCase<List<Location>, Void> {
 
-    SettingsDao settingsDao;
+    private  SettingsDao settingsDao;
 
     @Inject
     public GetUserSettingsUseCase(SettingsDao settingsDao) {

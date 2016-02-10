@@ -70,6 +70,4 @@ public class MainPresenterTest {
         verify(ui, times(1)).showLocationsForecast(locations);
 
     }
-
-
 }
