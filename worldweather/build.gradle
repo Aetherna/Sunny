@@ -10,7 +10,7 @@ android {
         targetSdkVersion CONFIG_TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
-        buildConfigField "String", "WEATHER_API_KEY", "\"239fd36834e8ad762c8dca32c7f42\""
+        buildConfigField "String", "WEATHER_API_KEY", "\""+getApiKey()+"\""
     }
     buildTypes {
         release {
@@ -21,6 +21,26 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+
+def getApiKey(){
+    def Properties props = new Properties()
+
+    def apiPropertiesFile = file(project.property("secret.properties"))
+
+    if(apiPropertiesFile.exists()){
+        props.load(new FileInputStream(apiPropertiesFile))
+        return props['API_KEY']
+    }
+
+    print('Api properties file not found using env var: ' +  System.getenv('WEATHER_API_KEY'))
+    return System.getenv('WEATHER_API_KEY')
 
 }
 
