@@ -34,12 +34,12 @@ def getApiKey(){
 
     def apiPropertiesFile = file(project.property("secret.properties"))
 
+    //local build lol
     if(apiPropertiesFile.exists()){
         props.load(new FileInputStream(apiPropertiesFile))
         return props['API_KEY']
     }
-
-    print('Api properties file not found using env var: ' +  System.getenv('WEATHER_API_KEY'))
+    //CI
     return System.getenv('WEATHER_API_KEY')
 
 }
