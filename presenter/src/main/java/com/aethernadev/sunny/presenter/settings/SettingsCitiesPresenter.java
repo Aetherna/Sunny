@@ -1,11 +1,14 @@
 package com.aethernadev.sunny.presenter.settings;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.aethernadev.sunny.base.UseCaseExecutor;
 import com.aethernadev.sunny.data.Location;
+import com.aethernadev.sunny.presenter.R;
 import com.aethernadev.sunny.presenter.base.BasePresenter;
 import com.aethernadev.sunny.presenter.base.UIAction;
+import com.aethernadev.sunny.presenter.error.LocationAlreadyAdded;
 import com.aethernadev.sunny.presenter.error.PrintableError;
 import com.aethernadev.sunny.presenter.error.SunnyError;
 import com.aethernadev.sunny.presenter.error.UnknownError;
@@ -58,7 +61,7 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
                         if (e instanceof UnknownHostException) {
                             showError(SunnyError.CONNECTION_ERROR);
                         } else {
-                            Log.e(SettingsCitiesPresenter.class.getSimpleName(),"Error finding locations:" + e.getMessage());
+                            Log.e(SettingsCitiesPresenter.class.getSimpleName(), "Error finding locations:" + e.getMessage());
                             showError(new UnknownError(e));
                         }
                     }
@@ -79,8 +82,7 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
 
     private void addFirstLocation(List<Location> locations) {
         final Location locationToAdd = locations.get(0);
-        selectedLocations.add(locationToAdd);
-        uiAddLocation(locationToAdd);
+        addSelectedLocation(locationToAdd);
         hideError();
     }
 
@@ -169,6 +171,12 @@ public class SettingsCitiesPresenter extends BasePresenter<SettingsCitiesPresent
     }
 
     public void addSelectedLocation(Location location) {
+
+        if (selectedLocations.contains(location)) {
+            showError(new LocationAlreadyAdded());
+            return;
+        }
+
         this.selectedLocations.add(location);
         uiAddLocation(location);
     }
